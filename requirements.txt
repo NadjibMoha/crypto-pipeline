@@ -1,0 +1,9 @@
+apache-airflow==2.9.0
+requests
+pandas
+psycopg2-binary
+SQLAlchemy
+streamlit
+plotly
+python-dotenv
+ta
