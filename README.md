@@ -18,7 +18,11 @@
 ![Airflow DAG Graph View](./images/dag.png)
 
 ### Streamlit Dashboard
-![Streamlit Dashboard](./images/dash1.png)
+![Streamlit Dashboard Page 1](./images/dash1.png)
+
+![Streamlit Dashboard Page 2](./images/dash2.png)
+
+![Streamlit Dashboard Page 3](./images/dash3.png)
 
 ---
 
