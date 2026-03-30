@@ -15,10 +15,10 @@
 ## 📸 Screenshots
 
 ### Airflow DAG — Graph View
-![Airflow DAG Graph View](./docs/screenshots/airflow_dag_graph.png)
+![Airflow DAG Graph View](./images/dag.png)
 
 ### Streamlit Dashboard
-![Streamlit Dashboard](./docs/screenshots/streamlit_dashboard.png)
+![Streamlit Dashboard](./images/dash1.png)
 
 ---
 
