@@ -8,7 +8,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-> A production-style, end-to-end cryptocurrency data pipeline that extracts market data from CoinGecko and Binance, applies technical indicator transformations, stores results in a PostgreSQL data warehouse, and visualizes everything on a live Streamlit dashboard — all orchestrated by Apache Airflow and containerized with Docker Compose.
+> A production-style, end-to-end cryptocurrency data pipeline that extracts market data from CoinGecko and Binance, applies technical indicator transformations, stores results in a PostgreSQL data warehouse, and visualizes everything on a live Streamlit dashboard, all orchestrated by Apache Airflow and containerized with Docker Compose.
 
 ---
 
@@ -17,11 +17,11 @@
 ### Airflow DAG — Graph View
 ![Airflow DAG Graph View](./images/dag.png)
 
-### Streamlit Dashboard
+### Streamlit Dashboard Page 1
 ![Streamlit Dashboard Page 1](./images/dash1.png)
-
+### Streamlit Dashboard Page 2
 ![Streamlit Dashboard Page 2](./images/dash2.png)
-
+### Streamlit Dashboard Page 3
 ![Streamlit Dashboard Page 3](./images/dash3.png)
 
 ---
