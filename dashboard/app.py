@@ -289,10 +289,11 @@ def fetch_top_movers() -> pd.DataFrame:
 @st.cache_data(ttl=300)
 def fetch_coin_prices() -> pd.DataFrame:
     query = """
-        SELECT coin_id, symbol, name, price_usd, market_cap_usd, 
+        SELECT DISTINCT ON (coin_id)
+               coin_id, symbol, name, price_usd, market_cap_usd, 
                volume_24h_usd, price_change_24h_pct, circulating_supply
         FROM staging.stg_prices
-        ORDER BY market_cap_usd DESC NULLS LAST
+        ORDER BY coin_id, fetched_at DESC
     """
     try:
         with get_connection() as conn:
@@ -512,7 +513,7 @@ with st.sidebar:
 st.markdown("""
 <div class="dashboard-header">
     <h1>⚡ CryptoPulse Analytics</h1>
-    <p>Real-time cryptocurrency market intelligence — powered by your automated data pipeline</p>
+    <p>Real-time cryptocurrency market intelligence powered by your automated data pipeline</p>
 </div>
 """, unsafe_allow_html=True)
 
