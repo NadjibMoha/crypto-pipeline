@@ -24,37 +24,18 @@
 
 ## 📐 Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                        Apache Airflow 2.9                           │
-│                    (Orchestration / Scheduler)                      │
-│                                                                     │
-│  ┌────────────────┐    ┌──────────────────┐    ┌────────────────┐  │
-│  │ extract_prices │───▶│ transform_data   │───▶│  load_to_db    │  │
-│  │ (CoinGecko +   │    │ (Pandas + `ta`   │    │  (PostgreSQL   │  │
-│  │  Binance OHLCV)│    │  indicators)     │    │   upsert)      │  │
-│  └────────────────┘    └──────────────────┘    └───────┬────────┘  │
-└────────────────────────────────────────────────────────│────────────┘
-                                                         │
-                  ┌──────────────────────────────────────▼────────────┐
-                  │            PostgreSQL 15 Data Warehouse            │
-                  │  ┌──────────────────┬──────────────────────────┐  │
-                  │  │  crypto_prices   │     coin_metadata        │  │
-                  │  ├──────────────────┼──────────────────────────┤  │
-                  │  │  ohlcv_data      │   fear_greed_index       │  │
-                  │  └──────────────────┴──────────────────────────┘  │
-                  └──────────────────────────────────────┬────────────┘
-                                                         │
-                  ┌──────────────────────────────────────▼────────────┐
-                  │         Streamlit Dashboard  (port 8501)           │
-                  │  • Price charts        • Technical indicators      │
-                  │  • OHLCV candles       • Fear & Greed index        │
-                  └──────────────────┬─────────────────┬──────────────┘
-                                     │                 │
-                              ┌──────┴──────┐   ┌─────┴────────┐
-                              │  Power BI   │   │ Looker Studio│
-                              │  (optional) │   │  (optional)  │
-                              └─────────────┘   └──────────────┘
+```mermaid
+flowchart LR
+    CG[CoinGecko API] --> EP[extract_prices]
+    BN[Binance API]   --> EO[extract_ohlcv]
+    EP --> TL[transform_and_load]
+    EO --> TL
+    TL --> UM[update_metadata]
+    UM --> FG[extract_fear_greed]
+    TL --> DB[(PostgreSQL)]
+    UM --> DB
+    FG --> DB
+    DB --> SD[Streamlit Dashboard]
 ```
 
 **Data flow summary:**
